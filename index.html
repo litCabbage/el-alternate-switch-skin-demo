@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="reset.css" type="text/css">
+  <link rel="stylesheet" href="default.css" type="text/css" title="默认">
+  <link rel="alternate stylesheet" href="red.css" type="text/css" title="红色">
+  <link rel="alternate stylesheet" href="green.css" type="text/css" title="绿色">
+</head>
+
+<body>
+  <div class="box">
+    <img src="../../wyy.jpeg">
+    <p>背景色是？文字颜色是？</p>
+  </div>
+  <p class="tc">
+    选择样式：
+    <input id="default" type="radio" name="skin" value="default.css" checked><label for="default">默认</label>
+    <input id="red" type="radio" name="skin" value="red.css"><label for="red">红色</label>
+    <input id="green" type="radio" name="skin" value="green.css"><label for="green">绿色</label>
+  </p>
+  <script>
+    window.onload = function () {
+      var eleLinks = document.querySelectorAll('link[title]'),
+        eleRadios = document.querySelectorAll('input[type="radio"]');
+      [].slice.call(eleRadios).forEach(function (radio) {
+        radio.addEventListener('click', function () {
+          var value = this.value;
+          [].slice.call(eleLinks).forEach(function (link) {
+            link.disabled = true;
+            if (link.getAttribute('href') == value) {
+              link.disabled = false;
+            }
+          })
+        })
+      })
+    }
+  </script>
+</body>
+
+</html>
